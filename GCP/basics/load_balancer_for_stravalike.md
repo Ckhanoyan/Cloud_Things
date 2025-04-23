@@ -1,5 +1,8 @@
 ### Use Case: Global External Application Load Balancer for a Strava-like Application
 
+![image](https://github.com/user-attachments/assets/5aa2c7fa-4374-462c-88dc-9671b51bd9e8)
+
+
 For a Strava-like application where users share workout activities such as running or cycling, implementing a **Global External Application Load Balancer** is highly appropriate. Below are the key reasons:
 
 1. **Public-Facing Application**: Since the application is public-facing and used by a global audience, a global load balancer is ideal for efficiently routing traffic worldwide.
