@@ -20,3 +20,15 @@ For a Strava-like application where users share workout activities such as runni
 7. **Integration with Google Cloud**: Seamless integration with other Google Cloud services simplifies application deployment and management while enabling robust monitoring and logging.
 
 By leveraging a **Global External Application Load Balancer**, the application ensures a secure, scalable, and performant experience for users posting and viewing workout activities.
+
+### Option B: Network Load Balancer for Real-Time Data
+
+For applications that require real-time or near real-time updates, such as live workout tracking or leaderboard updates, a **Network Load Balancer** could be considered. The key advantages include:
+
+1. **Low Latency**: Network Load Balancers operate at the TCP/UDP level, providing lower latency compared to Application Load Balancers, which is critical for live data updates.
+2. **High Throughput**: They can handle a high number of connections simultaneously, ensuring that live updates reach all users promptly.
+3. **Scalability**: Can easily scale to accommodate spikes in usage, such as during fitness challenges or live competitions.
+4. **Integration with Backend Services**: Works seamlessly with backend services that need to process continuous streams of data.
+5. **Simplicity**: Ideal for applications with simpler traffic distribution requirements that prioritize performance over complex routing logic.
+
+By utilizing a **Network Load Balancer**, the application ensures fast, reliable delivery of live results, enhancing the user experience for real-time features.
