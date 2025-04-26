@@ -71,8 +71,6 @@
 
 # Architecture Diagram
 
-(Embed Architecture Diagram here)
-
 ```mermaid
 flowchart TD
     User --> GlobalLoadBalancer
