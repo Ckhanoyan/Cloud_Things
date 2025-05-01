@@ -66,3 +66,16 @@ spec:
             name: notification-service
             port:
               number: 80
+
+```
+## Best Practices
+1. Use HTTPS for Secure Communication
+Obtain TLS certificates using Cert-Manager or Let's Encrypt.
+Define the tls section in the ingress resource to enforce HTTPS.
+2. Leverage Annotations for Custom Behavior
+Use annotations to customize ingress behavior, such as enabling SSL redirection and setting timeouts.
+3. Enable Autoscaling for Traffic Spikes
+Configure Horizontal Pod Autoscalers (HPA) for backend services to handle sudden traffic surges.
+4. Distribute Traffic Across Zones
+Deploy services in a regional cluster to ensure high availability.
+
