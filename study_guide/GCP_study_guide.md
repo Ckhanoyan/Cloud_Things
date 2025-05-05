@@ -29,7 +29,7 @@ A structured guide to efficiently learn key Google Cloud Platform (GCP) services
 - [ ] Understand Kubernetes Engine (GKE)
 - [ ] Explore App Engine
 - [ ] Get familiar with Cloud Functions
-  - **GitHub Use Case:** [Compute-related file](https://github.com/Ckhanoyan/Cloud_Things/blob/main/path/to/compute_use_case.md) _(Update this link with the actual file path)_
+  - **GitHub Use Case:** [Compute-related file](https://github.com/Ckhanoyan/Cloud_Things/blob/ae86d6a2ec2e18a559fb2d2b75896b6718a7e914/GCP/basics/stravalike_app/compute_engine.md) _(Strava-like app Compute Engine use case)_
 
 ---
 
