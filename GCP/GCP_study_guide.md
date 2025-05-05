@@ -9,7 +9,7 @@ This study guide is designed to enhance your understanding of Google Cloud Platf
 - **[Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs)**: Learn about cluster setup, workload management, and scaling.
   - [ ] Explore GKE Autopilot vs Standard GKE.
   - [ ] Study Kubernetes best practices for microservices.
-  - Related File: [Microservices on GKE](./GCP/basics/stravalike_app/k8.md)
+  - Related File: [Microservices on GKE]([./GCP/basics/stravalike_app/k8.md](https://github.com/Ckhanoyan/Cloud_Things/blob/main/GCP/basics/stravalike_app/k8.md))
 
 - **[Compute Engine](https://cloud.google.com/compute/docs)**: Understand VM instances, networking, and autoscaling.
   - [ ] Practice creating and managing VMs using both UI and CLI.
