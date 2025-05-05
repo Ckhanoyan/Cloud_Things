@@ -16,7 +16,7 @@ A structured guide to efficiently learn key Google Cloud Platform (GCP) services
 ---
 
 ### 1. Identity and Access Management (IAM)
-- [ ] Understand IAM roles and permissions
+- [x] Understand IAM roles and permissions
 - [ ] Create and manage service accounts
 - [ ] Explore IAM policies
 - [ ] Study best practices for securing resources
