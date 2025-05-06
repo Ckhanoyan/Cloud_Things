@@ -4,11 +4,6 @@
 1. Log in to the [Google Cloud Console](https://console.cloud.google.com).
 2. Create a new project or select an existing one.
 3. Enable the **Compute Engine API**:
-   - **No-Code Option**: Use the Console UI to navigate to **APIs & Services**, search for "Compute Engine API," and click **Enable**.
-   - **Code-Based Option**: Run the following in Cloud Shell or a terminal:
-     ```bash
-     gcloud services enable compute.googleapis.com
-     ```
 
 ---
 
