@@ -11,7 +11,7 @@
    - Open your terminal or Cloud Shell.
    - Run the following command:
    ```bash
-   
+   gcloud services enable compute.googleapis.com 
 ---
 
 ## Step 2: Launch a VM Instance
