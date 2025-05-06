@@ -7,6 +7,12 @@
    - Click on Compute Engine API from the search results.
    - Click the Enable button to activate it for your project.
 
+2. **Enabling Compute Engine API Using gCloud CLI**:
+   - Open your terminal or Cloud Shell.
+   - Run the following command:
+   ```bash
+   gcloud services enable compute.googleapis.com
+
 ---
 
 ## Step 2: Launch a VM Instance
