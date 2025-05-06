@@ -1,4 +1,4 @@
-# Launching a Google Cloud VM for a Scalable Strava-like Platform
+# Launching a Google Cloud VM for a Scalable Trackme.ai Platform
 
 ## Step 1: Set Up Your Google Cloud Project
 1. Log in to the [Google Cloud Console](https://console.cloud.google.com).
@@ -16,7 +16,7 @@
 1. **No-Code Option**:
    - Navigate to the **Compute Engine** section in the Cloud Console and click **Create Instance**.
    - Fill in the details:
-     - **Name**: `strava-backend`
+     - **Name**: `trackme.ai-backend`
      - **Machine Type**: `n1-standard-1`
      - **Image**: Ubuntu 20.04 LTS
      - **Zone**: `us-central1-a`
@@ -25,7 +25,7 @@
 2. **Code-Based Option**:
    Run the following in Cloud Shell or a terminal:
    ```bash
-   gcloud compute instances create strava-backend \
+   gcloud compute instances create trackme.ai-backend \
        --machine-type=n1-standard-1 \
        --image-family=ubuntu-2004-lts \
        --image-project=ubuntu-os-cloud \
@@ -46,7 +46,7 @@
 2. **Code-Based Option**:
    Run the following:
    ```bash
-   gcloud compute ssh strava-backend --zone=us-central1-a
+   gcloud compute ssh trackme.ai-backend --zone=us-central1-a
    sudo apt update && sudo apt upgrade -y
    sudo apt install apache2 -y
    ```
@@ -72,7 +72,7 @@
 
    @app.route('/')
    def home():
-       return "Welcome to Strava-like Backend!"
+       return "Welcome to Trackme.ai Backend!"
 
    if __name__ == "__main__":
        app.run(host="0.0.0.0", port=80)
@@ -110,13 +110,13 @@
 2. **Code-Based Option**:
    Create a Managed Instance Group:
    ```bash
-   gcloud compute instance-templates create strava-template \
+   gcloud compute instance-templates create trackme.ai-template \
        --machine-type=n1-standard-1 \
        --image-family=ubuntu-2004-lts \
        --image-project=ubuntu-os-cloud
 
-   gcloud compute instance-groups managed create strava-group \
-       --base-instance-name strava-backend \
+   gcloud compute instance-groups managed create trackme.ai-group \
+       --base-instance-name trackme.ai-backend \
        --template=strava-template \
        --size=1 \
        --zone=us-central1-a
@@ -124,7 +124,7 @@
 
    Enable autoscaling:
    ```bash
-   gcloud compute instance-groups managed set-autoscaling strava-group \
+   gcloud compute instance-groups managed set-autoscaling trackme.ai-group \
        --zone=us-central1-a \
        --max-num-replicas=5 \
        --target-cpu-utilization=0.6
@@ -132,10 +132,10 @@
 
    Add a load balancer:
    ```bash
-   gcloud compute forwarding-rules create strava-load-balancer \
+   gcloud compute forwarding-rules create trackme.ai-load-balancer \
        --load-balancing-scheme=EXTERNAL \
        --ports=80 \
-       --target-pool=strava-group \
+       --target-pool=trackme.ai-group \
        --region=us-central1
    ```
 
