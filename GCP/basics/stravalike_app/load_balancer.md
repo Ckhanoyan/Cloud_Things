@@ -1,9 +1,9 @@
-### Use Case: Global External Application Load Balancer for a Strava-like Application
+### Use Case: Global External Application Load Balancer for Trackme.ai Application
 
 ![image](https://github.com/user-attachments/assets/5aa2c7fa-4374-462c-88dc-9671b51bd9e8)
 
 
-For a Strava-like application where users share workout activities such as running or cycling, implementing a **Global External Application Load Balancer** is highly appropriate. Below are the key reasons:
+For this application where users share workout activities such as running or cycling, implementing a **Global External Application Load Balancer** is highly appropriate. Below are the key reasons:
 
 1. **Public-Facing Application**: Since the application is public-facing and used by a global audience, a global load balancer is ideal for efficiently routing traffic worldwide.
 
@@ -15,7 +15,7 @@ For a Strava-like application where users share workout activities such as runni
 
 5. **Scalability**: The global load balancer can handle large traffic volumes efficiently, scaling as needed to accommodate high user demand, which is vital for a social app with fluctuating traffic.
 
-6. **Custom Domain and SSL**: The load balancer supports custom domains (e.g., `www.stravalikeapp.com`) and SSL/TLS certificates, ensuring secure and professional communication with users.
+6. **Custom Domain and SSL**: The load balancer supports custom domains (e.g., `www.trackme.ai.com`) and SSL/TLS certificates, ensuring secure and professional communication with users.
 
 7. **Integration with Google Cloud**: Seamless integration with other Google Cloud services simplifies application deployment and management while enabling robust monitoring and logging.
 
