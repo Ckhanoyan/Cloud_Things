@@ -1,4 +1,4 @@
-# Migrating Strava from AWS to Google Cloud Platform (GCP)
+# Migrating Trackme.ai from AWS to Google Cloud Platform (GCP)
 
 ## Core Principles for Cloud Migration (AWS → GCP)
 
