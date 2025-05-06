@@ -48,7 +48,7 @@ Understand how to deploy and manage scalable compute resources.
   - Deploy containerized applications without managing servers.  
 
 ### Linked Files
-- [TrackMe.ai Compute Study Guide](https://github.com/Ckhanoyan/Cloud_Things/blob/main/GCP/basics/trackme.ai/studyguide.md)
+- [TrackMe.ai Compute Study Guide](https://github.com/Ckhanoyan/Cloud_Things/blob/main/GCP/basics/trackme.ai/compute_engine.md)
 
 ---
 
