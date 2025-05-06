@@ -1,8 +1,8 @@
-# Ingress Configuration and Best Practices for Strava-Like App on GKE
+# Ingress Configuration and Best Practices for Trackme.ai App on GKE
 
 ## Overview
 
-This document outlines the recommended ingress configurations and best practices for deploying a Strava-like application on Google Kubernetes Engine (GKE). The ingress setup ensures secure, efficient, and scalable routing of HTTP/HTTPS traffic to the app's microservices.
+This document outlines the recommended ingress configurations and best practices for deploying this application on Google Kubernetes Engine (GKE). The ingress setup ensures secure, efficient, and scalable routing of HTTP/HTTPS traffic to the app's microservices.
 
 ---
 
@@ -23,7 +23,7 @@ The following ingress configuration routes traffic to the application's microser
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: stravalike-ingress
+  name: trackme.ai-ingress
   annotations:
     kubernetes.io/ingress.class: "gce" # Use GCE Ingress Controller for GKE
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -33,10 +33,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - stravalike.example.com
-    secretName: stravalike-tls # TLS Secret for HTTPS
+    - trackme.ai.example.com
+    secretName: trackme.ai-tls # TLS Secret for HTTPS
   rules:
-  - host: stravalike.example.com
+  - host: trackme.ai.example.com
     http:
       paths:
       - path: /auth
