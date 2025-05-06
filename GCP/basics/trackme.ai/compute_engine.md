@@ -1,13 +1,13 @@
 # Launching a Google Cloud VM for a Scalable Trackme.ai Platform
 
 ## Step 1: Set Up Your Google Cloud Project
-1. **Open the Google Cloud Console API Library**:
+1. **Option A: Open the Google Cloud Console API Library**:
    - Ensure you have selected the correct project from the top project dropdown.
    - Search for "Compute Engine API" in the API Library.
    - Click on Compute Engine API from the search results.
    - Click the Enable button to activate it for your project.
 
-2. **Enabling Compute Engine API Using gCloud CLI**:
+2. **Option B: Enabling Compute Engine API Using gCloud CLI**:
    - Open your terminal or Cloud Shell.
    - Run the following command:
    ```bash
