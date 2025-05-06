@@ -60,7 +60,7 @@
 
 ---
 
-## Bonus (Why GCP fits Strava)
+## Bonus (Why GCP fits Trackme.ai)
 
 - **GKE Autopilot** = serverless Kubernetes clusters without ops overhead
 - **Pub/Sub** = highly scalable event-driven architecture
