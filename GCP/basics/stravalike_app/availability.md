@@ -1,6 +1,6 @@
-# High Availability Setup for Strava-like Application on Google Cloud
+# High Availability Setup for Trackme.ai Application on Google Cloud
 
-To ensure high availability for this Strava-like application, my recommendations are below:
+To ensure high availability for this Trackme.ai application, my recommendations are below:
 
 ### 1. Global Deployment with Managed Instance Groups (MIGs)
 - Deploy your application across multiple regions using **Managed Instance Groups**.
