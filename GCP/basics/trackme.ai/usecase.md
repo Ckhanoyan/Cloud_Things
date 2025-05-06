@@ -1,84 +1,26 @@
-# Migrating Trackme.ai from AWS to Google Cloud Platform (GCP)
+# AWS to GCP Migration: Core Services and Considerations for trackme.ai
 
-## Core Principles for Cloud Migration (AWS → GCP)
+| **GCP Service**         | **Description**                                                                 | **AWS Equivalent**        | **Migration Considerations**                                                                                                               |
+|--------------------------|---------------------------------------------------------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| **Compute Engine**       | Virtual machines running in Google Cloud. Ideal for running existing workloads. | EC2                        | - Analyze instance types and sizes.<br/>- Plan for VM image conversion.<br/>- Update startup scripts and configurations.                  |
+| **Google Kubernetes Engine (GKE)** | Managed Kubernetes service for containerized apps.                                      | EKS                        | - Evaluate container orchestration setup.<br/>- Migrate Kubernetes manifests.<br/>- Test service discovery and scaling policies.          |
+| **Cloud Storage**        | Scalable object storage for unstructured data.                                                  | S3                         | - Review bucket configuration.<br/>- Update object URLs.<br/>- Migrate data using gsutil or Transfer Appliance for large datasets.        |
+| **Cloud SQL**            | Managed relational database service.                                                            | RDS                        | - Verify database compatibility.<br/>- Update connection strings.<br/>- Use Database Migration Service to minimize downtime.             |
+| **BigQuery**             | Serverless data warehouse for analytics.                                                        | Redshift                   | - Optimize schemas for BigQuery.<br/>- Update SQL queries.<br/>- Train team on new SQL dialect.                                           |
+| **Cloud Pub/Sub**        | Messaging and event-driven architecture.                                                        | Amazon SNS/SQS             | - Migrate topics and queues.<br/>- Ensure message format compatibility.<br/>- Test end-to-end delivery in GCP.                           |
+| **Cloud Functions**      | Serverless compute for event-driven workloads.                                                  | AWS Lambda                 | - Adapt function triggers to GCP equivalents.<br/>- Update IAM roles and permissions.<br/>- Test cold start times and performance.        |
+| **Identity and Access Management (IAM)** | Fine-grained access control for GCP resources.                                                  | IAM                        | - Map AWS IAM roles to GCP IAM policies.<br/>- Audit permissions and redesign as needed.<br/>- Enable centralized logging for access.    |
+| **VPC**                  | Private networking for resources within GCP.                                                    | VPC                        | - Recreate subnets, routes, and firewalls.<br/>- Update DNS and peering configurations.<br/>- Test connectivity between services.         |
+| **Cloud Monitoring**     | Observability and monitoring tools for GCP resources.                                           | CloudWatch                 | - Configure alerts and dashboards.<br/>- Integrate with existing monitoring workflows.<br/>- Train team on Cloud Monitoring features.    |
+| **Cloud Spanner**        | Globally distributed, horizontally scalable relational database.                                 | Aurora or DynamoDB         | - Evaluate cost and scaling needs.<br/>- Migrate schema and data.<br/>- Test application integration.                                     |
+| **Cloud Build**          | CI/CD service for building and deploying applications.                                           | CodePipeline               | - Migrate pipelines to Cloud Build YAML.<br/>- Test build triggers and artifact storage.<br/>- Integrate with GKE or App Engine.         |
+| **Cloud DNS**            | Scalable, reliable, and managed DNS service.                                                    | Route 53                   | - Migrate DNS records.<br/>- Test DNS resolution.<br/>- Validate TTL settings for minimal downtime.                                       |
+| **Cloud Armor**          | DDoS protection and web application firewall (WAF).                                             | AWS Shield/WAF             | - Review and recreate security rules.<br/>- Test against known attack vectors.<br/>- Integrate with Cloud Load Balancer.                 |
+| **Cloud Load Balancing** | Fully-distributed load balancing for GCP services.                                              | Elastic Load Balancing (ELB)| - Update backend configurations.<br/>- Test health checks and failover.<br/>- Ensure compatibility with global and regional setups.       |
+| **Billing and Budgets**  | Cost management tools for GCP resources.                                                        | AWS Billing and Cost Management | - Set up budgets and alerts.<br/>- Review cost attribution tags.<br/>- Monitor billing reports for anomalies.                              |
 
-| **Topic** | **AWS** | **GCP Equivalent** | **What Changes?** |
-|:---|:---|:---|:---|
-| Compute | EC2 (VMs), ECS, EKS (Kubernetes) | GKE (Google Kubernetes Engine) | Move workloads to GKE clusters |
-| Networking | VPC, ELB, Route 53 | VPC, Cloud Load Balancing, Cloud DNS | Map networking rules and services carefully |
-| Storage | S3 (object storage) | GCS (Google Cloud Storage) | Migrate large datasets carefully |
-| IAM/Security | IAM, KMS, Secrets Manager | IAM, KMS, Secret Manager | Rebuild roles, permissions, secrets |
-| Database | RDS, DynamoDB | Cloud SQL, Firestore, Bigtable | Map data models and services to GCP databases |
-| Monitoring | CloudWatch, X-Ray | Cloud Monitoring, Cloud Trace, Cloud Logging | Update observability stack |
-| Serverless | Lambda | Cloud Functions, Cloud Run | Optional serverless migration |
-| Messaging | SNS/SQS | Pub/Sub | Different service characteristics |
-
----
-
-## Kubernetes-Specific Best Practices (GKE)
-
-| **Topic** | **Best Practice on AWS** | **GCP Migration Notes** |
-|:---|:---|:---|
-| Kubernetes | EKS, manually scaling clusters | Use GKE Autopilot for easy scaling or Standard GKE for full control |
-| Service Mesh | Istio/Linkerd (optional) | Anthos Service Mesh (optional, integrated into GCP) |
-| Ingress Controller | AWS ALB Ingress Controller | Use GKE-native HTTP(S) Load Balancer with GKE Ingress |
-| Persistent Volumes | EBS volumes | Switch to GCP Persistent Disks (dynamic provisioning) |
-| Secrets Management | AWS Secrets Manager / Kubernetes Secrets | Use GCP Secret Manager integrated with GKE |
-| Monitoring | Prometheus/Grafana + CloudWatch | Use GCP Managed Prometheus + Cloud Logging/Monitoring |
-| CI/CD | GitHub Actions, AWS CodePipeline | Use Cloud Build, Cloud Deploy or GitHub pipelines |
-| Data Storage | DynamoDB, RDS | Cloud SQL, Firestore, or Bigtable based on workload |
-
----
-
-## Microservices Migration for Strava
-
-| **Service** | **Considerations** | **Changes on GCP** |
-|:---|:---|:---|
-| Leaderboard | - High-concurrency read<br>- Consistency critical | - Cache hot data with MemoryStore (Redis)<br>- Use Cloud SQL (Postgres) for transactions |
-| Kudos | - High volume fanout writes<br>- Event-driven architecture | - Use Pub/Sub for async fanout<br>- Batch writes into databases |
-| Messaging | - Real-time message delivery<br>- High reliability | - Use Pub/Sub queues<br>- Cloud Run for real-time API endpoints<br>- Store messages in Firestore or Cloud SQL |
-
----
-
-## Key Challenges to Solve
-
-- Identity Federation: map IAM roles across AWS to GCP IAM policies
-- Secrets Management: migrate and rotate sensitive credentials securely
-- Data Transfer: careful planning if large-scale data migration (S3 → GCS)
-- Kubernetes Upgrades: ensure microservices are forward-compatible on GKE
-- Observability: rebuild monitoring dashboards (GKE-native or Prometheus)
-
----
-
-## High-Level Migration Strategy
-
-1. **Lift-and-shift Kubernetes apps** first (low-risk microservices)
-2. **Refactor data layers** carefully — treat databases as critical
-3. **Rebuild monitoring and alerting** using GCP Cloud Monitoring and Logging
-4. **Optimize cost models** post-migration (GKE Autopilot, Committed Use Discounts)
-5. **Integrate AI/ML personalization** using Vertex AI for new features
-
----
-
-## Bonus (Why GCP fits Trackme.ai)
-
-- **GKE Autopilot** = serverless Kubernetes clusters without ops overhead
-- **Pub/Sub** = highly scalable event-driven architecture
-- **Vertex AI** = future-ready platform to personalize Strava feeds and recommendations
-- **Global Load Balancers** = world-class latency, ideal for global Strava users
-
----
-
-# Architecture Diagram
-
-```mermaid
-flowchart TD
-    User --> GlobalLoadBalancer
-    GlobalLoadBalancer --> GKEIngress
-    GKEIngress --> GKECluster
-    GKECluster -->|Services| Microservices[Leaderboard, Kudos, Messaging]
-    Microservices -->|DB Reads/Writes| CloudSQL[(Cloud SQL / Firestore)]
-    Microservices --> PubSub[(Pub/Sub)]
-    PubSub --> CloudFunctions[(Cloud Functions for Async Tasks)]
-    Monitoring -->|Metrics| CloudMonitoring[(Cloud Monitoring)]
-    Logging -->|Logs| CloudLogging[(Cloud Logging)]
+## Notes
+- Before starting the migration, ensure that all stakeholders understand the differences between AWS and GCP services.
+- Use GCP’s [Migrate for Compute Engine](https://cloud.google.com/migrate/compute-engine) for VM migrations.
+- Take advantage of GCP’s [Database Migration Service](https://cloud.google.com/database-migration) for smooth database transitions.
+- Test every service post-migration to ensure the app functions as expected in the new environment.
