@@ -1,6 +1,6 @@
-# Budget Setup for Strava-like App
+# Budget Setup for Trackme.ai App
 
-This document outlines the budget configuration for the Strava-like app on Google Cloud.
+This document outlines the budget configuration for the app on Google Cloud.
 
 ## Monthly Budget
 - **Total Budget**: $100 per month.
