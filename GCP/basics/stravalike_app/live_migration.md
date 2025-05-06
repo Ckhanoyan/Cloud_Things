@@ -1,4 +1,4 @@
-# Live Migration and GPU Setup for Strava-like App
+# Live Migration and GPU Setup for Trackme.ai App
 
 This guide explains how to enable live migration and add GPU support to your virtual machine (VM) using the **Google Cloud Console**. These steps ensure uninterrupted service and enhanced performance for AI-based athlete performance prediction.
 
