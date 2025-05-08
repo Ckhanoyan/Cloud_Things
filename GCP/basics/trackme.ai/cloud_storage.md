@@ -71,4 +71,4 @@ Here is a checklist of best practices for setting up Google Cloud Storage tailor
 ---
 
 #### **Related Files**
-Since the file `cloud_storage.md` in your repo does not currently have any content, consider starting with this checklist and updating the file. You can also find best practices for GCP cloud storage in the [Google Cloud Storage Documentation](https://cloud.google.com/storage/docs/best-practices).
+You can also find best practices for GCP cloud storage in the [Google Cloud Storage Documentation](https://cloud.google.com/storage/docs/best-practices).
