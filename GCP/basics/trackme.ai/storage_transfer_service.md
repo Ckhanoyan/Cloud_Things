@@ -26,11 +26,11 @@
   * Watch the job progress in the GCP Console.
   * Validate that the data was successfully migrated.
     * Use case: Verify that sensitive trackme.ai datasets were transferred correctly.
- Step 6: Post-Migration Steps
 
- Update application configurations in trackme.ai to use the GCS bucket.
- Set up data lifecycle policies in the GCS bucket.
-Use case: Automate data archival or deletion for cost optimization.
+* Step 6: Post-Migration Steps
+ * Update application configurations in trackme.ai to use the GCS bucket.
+ * Set up data lifecycle policies in the GCS bucket.
+  * Use case: Automate data archival or deletion for cost optimization.
 
 
 
