@@ -57,6 +57,4 @@ Prepare for the Google Cloud Professional Cloud Architect exam by reviewing how 
   - *Use Case*: If available, Wahoo devices would authenticate and send data to IoT Core, which then forwards to Pub/Sub.
   - [GCP IoT Solutions](https://cloud.google.com/solutions/iot)
 
----
 
-## Architecture Flow
